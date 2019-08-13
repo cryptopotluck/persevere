@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="card container">
+        <form method="post" action="{% url 'ask' %}" novalidate="novalidate">
+            {% csrf_token %}
+            <div class="col-md-9">
+                <div class="form-group">
+                <label for="inputBread">Title Post</label>
+                 {{ form.post_title }}
+                </div></div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="inputState">Pick the Language</label>
+                    {{ form.language }}
+                </div>
+                </div>
+
+    <label for="inputAddress">Question</label>
+            <!-- add rich text editor here -->
+      {{ form.media }}
+                <div style="width: 100%">{{ form.post_body |safe }}</div>
+            <div class="form-footer">
+                <center><button class="btn btn-success btn-round" type="submit">Submit</button> </center>
+            </div>
+        </form>
+    </div>
+    </div>
+{% endblock %}

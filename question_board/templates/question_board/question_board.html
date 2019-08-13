@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftr4.cbsistatic.com%2Fhub%2Fi%2Fr%2F2016%2F04%2F26%2F76f39d8a-1850-455d-8164-c4e2c3dc678a%2Fthumbnail%2F768x432%2F07e42533e027f560d83422e4daf97b88%2Focusfocusistock000079347659small.jpg&f=1" style="width: 100vw; height: 30vw; opacity: 0.7">
+    <div class="container">
+    <br>
+    <div class="row card" style="background-color: black; opacity: 0.8">
+        <div class="col-md-3">
+        <h3><font color="white"> Question Board: </font></h3>
+            </div>
+        <div class="col-md-6">
+        <form class="form-inline ml-auto">
+            <p></p>
+                  <div class="form-group no-border bmd-form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                  </div>
+                  <button type="submit" class="btn btn-neutral btn-icon btn-round">
+                    <i class="material-icons">search</i>
+                  </button>
+                </form>
+            </div>
+    </div>
+    <div class="row">
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'all' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.codingdojo.com%2Fblog%2Fwp-content%2Fuploads%2FMost-In-Demand-Programming-Jobs.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'all' %}">All Questions</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="0">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'html' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.innovafire.com%2Fsites%2Fdefault%2Ffiles%2Fblog%2Fhtml.jpg&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'html' %}">HTML Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'css' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fdab1nmslvvntp.cloudfront.net%2Fwp-content%2Fuploads%2F2016%2F09%2F1475177859css.jpg&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'css' %}">CSS Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+    <div class="row">
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'javascript' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1600%2F1*ot7tWiPCYC01pV0kGmK3qQ.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'javascript' %}">Javascript Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="0">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'node' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.online-sciences.com%2Fwp-content%2Fuploads%2F2017%2F05%2FNode.js-15.jpg&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'node' %}">Node Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'react' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fblog.dashlane.com%2Fwp-content%2Fuploads%2F2016%2F02%2Freact-logo-2.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'react' %}">React Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+    <div class="row">
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'java' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F10%2FJava_logo_icon.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'java' %}">Java Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="0">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'jquery' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fpluspng.com%2Fimg-png%2Fjquery-logo-png-jquerypro-600.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'jquery' %}">JQuery Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'sass' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.michaellerner.net%2Fwp-content%2Fuploads%2F2016%2F11%2Fsass-logo.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'sass' %}">Sass Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+    <div class="row">
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'python' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Folimex.files.wordpress.com%2F2014%2F06%2Fpython_sh-600x6001.png&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'python' %}">Python Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="0">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'datascience' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fanalyticsforinsights.files.wordpress.com%2F2015%2F04%2Fsuperman-data-scientist-graphic.jpg&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'datascience' %}">Data Science Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card card-product" data-count="1">
+                              <div class="card-header card-header-image" data-header-animation="true">
+                                <a href="{% url 'sql' %}">
+                                  <img class="img" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.openautomationsoftware.com%2Fwp-content%2Fuploads%2F2016%2F05%2FSQL-azure-logo-large.png%3Fx97113&f=1" style="height: 350px">
+                                </a>
+                              </div>
+                              <div class="card-body">
+                                <h4 class="card-title">
+                                  <a href="{% url 'sql' %}">SQL Help</a>
+                                </h4>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+    </div>
+
+{% endblock %}

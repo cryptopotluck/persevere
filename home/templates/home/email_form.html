@@ -1,0 +1,65 @@
+<form method="post" action="{% url 'mail' %}">
+    {% csrf_token %}
+<div class="container">
+    <div class="col-md-12">
+              <div class="card ">
+                <div class="card-header success" style="position: relative; top: -3vh; left: -2vh" >
+                     <div class="nav-tabs-wrapper">
+                      <ul class="nav nav-tabs nav-justified" data-tabs="tabs" data-background-color="green">
+
+                  <h4 class="card-title text-center"><i class="material-icons">mail_outline</i> Get in Touch</h4>
+                      </ul>
+                     </div>
+                </div>
+                <div class="card-body ">
+                    <div class="container">
+                  <form method="get" action="/" class="form-horizontal">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">First Name</label>
+                      <div class="col-sm-9">
+                        <div class="form-group bmd-form-group">
+                          <input name="first" type="text" class="form-control" placeholder="First Name...">
+                        </div>
+                      </div>
+                    </div>
+                      <div class="row">
+                      <label class="col-sm-2 col-form-label">Last Name</label>
+                      <div class="col-sm-9">
+                        <div class="form-group bmd-form-group">
+                          <input name="last" type="text" class="form-control" placeholder="Last Name...">
+                          <span class="bmd-help">A block of help text that breaks onto a new line.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                        <div class="form-group bmd-form-group">
+                          <input name="email" type="email" class="form-control" placeholder="Email..">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Message</label>
+                      <div class="col-sm-9">
+                        <div class="form-group bmd-form-group">
+                            <textarea name="message" type="text" class="form-control" placeholder="Message" style="height: 10vh"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </form>
+                        </div>
+                </div>
+                <div class="card-footer ">
+                  <div class="row">
+                    <div class="col-md-9" style="position: relative; right: -28vw">
+                      <button type="submit" class="btn btn-fill btn-success">Send</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+</div>
+    </form>

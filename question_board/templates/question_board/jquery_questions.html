@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <img src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Ftaswar.zeytinsoft.com%2Fwp-content%2Fuploads%2F2014%2F05%2Fjquery-logo.png&f=1" style="width: 100vw; height: 30vw; opacity: 0.7">
+    <div class="container">
+    <br>
+    <div class="row card" style="background-color: black; opacity: 0.8">
+        <center>
+        <div class="col-md-2">
+        <h3><font color="white"> Python Help: </font></h3>
+            </div>
+        <div class="col-md-2">
+            <p></p>
+            <a class="btn btn-round btn-neutral" href="{% url 'ask' %}">Ask a Question!</a>
+        </div>
+            <div class="col-md-2">
+                <p></p>
+                <h3><font color="white"> or </font></h3>
+            </div>
+        <div class="col-md-5 col-sm-5">
+        <form class="form-inline ml-auto">
+            <p></p>
+                  <div class="form-group no-border bmd-form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                  </div>
+                  <button type="submit" class="btn btn-neutral btn-icon btn-round">
+                    <i class="material-icons">search</i>
+                  </button>
+                </form>
+            </div>
+        </center>
+    </div>
+    <center>
+    <div class="row">
+<div class="col-md-1">
+
+</div>
+        <div class="col-md-10">
+            {% if posts.has_other_pages %}
+          <ul class="pagination">
+          {% if posts.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+            </li>
+              {% else %}
+                <li class="page-item disabled">
+              <a class="page-link">&laquo;</a>
+            </li>
+              {% endif %}
+                {% for i in posts.paginator.page_range %}
+                    {% if coin.number == i %}
+                        <li class="page-item active">
+                         <a class="page-link">{{ i }}</a>
+                         </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% if posts.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ posts.next_page_number }}">&raquo;</a>
+            </li>
+              {% else %}
+                <li class="page-item disabled">
+              <a class="page-link">&raquo;</a>
+            </li>
+              {% endif %}
+          </ul>
+            {% endif %}
+        </div>
+        <div class="col-md-1">
+
+</div>
+      </div>
+    </center>
+    {%  for post in posts %}
+    <div class="row">
+    <a href="{% url 'question_detail' post.id %}">
+        <div class="card">
+            <div class="container">
+                <div class="h2 card-title"><center>{{ post.post_title | title}}</center></div>
+                </div>
+            <hr>
+            <div class="container">
+            <div class="card-blog">
+                {{ post.post_body | safe }}
+            </div>
+        <label>Asked By: {{ post.post_owner }}</label>
+            </div>
+
+
+            </div>
+    </a>
+    </div>
+    {% endfor %}
+    <center>
+    <div class="row">
+<div class="col-md-1">
+
+</div>
+        <div class="col-md-10">
+            {% if posts.has_other_pages %}
+          <ul class="pagination">
+          {% if posts.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+            </li>
+              {% else %}
+                <li class="page-item disabled">
+              <a class="page-link">&laquo;</a>
+            </li>
+              {% endif %}
+                {% for i in posts.paginator.page_range %}
+                    {% if coin.number == i %}
+                        <li class="page-item active">
+                         <a class="page-link">{{ i }}</a>
+                         </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% if posts.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ posts.next_page_number }}">&raquo;</a>
+            </li>
+              {% else %}
+                <li class="page-item disabled">
+              <a class="page-link">&raquo;</a>
+            </li>
+              {% endif %}
+          </ul>
+            {% endif %}
+        </div>
+        <div class="col-md-1">
+
+</div>
+      </div>
+    </center>
+    </div>
+{% endblock %}

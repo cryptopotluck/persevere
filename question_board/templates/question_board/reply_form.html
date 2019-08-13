@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="card">
+        {{ post.post_body | safe }}
+    </div>
+    </div>
+    <div class="container">
+    <div class="card container">
+        <form method="POST" action="" novalidate="novalidate">
+            {% csrf_token %}
+    <label for="inputAddress">Answer</label>
+            <!-- add rich text editor here -->
+      {{ form.media }}
+                <div style="width: 100%">{{ form.reply_body |safe }}</div>
+            <div class="form-footer">
+                <center><button class="btn btn-success btn-round" type="submit">Submit</button> </center>
+            </div>
+        </form>
+    </div>
+    </div>
+{% endblock %}

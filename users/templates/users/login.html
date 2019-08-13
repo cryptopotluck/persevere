@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.jamesgmartin.center%2Fwp-content%2Fuploads%2F2017%2F09%2FFotolia_169539793_Subscription_Monthly_M-1200x840.jpg&f=1'); background-size: cover; background-position: top center; height: 80vh">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="container">
+        <div class="row">
+            <br>
+            <br>
+            <br>
+            <br>
+          <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto" data-aos="fade-up">
+            <form class="form" method="post" action="{% url 'login' %}" id="LoginValidation">
+                {% csrf_token %}
+              <div class="card card-login">
+                <div class="card-body ">
+                  <p class="card-title text-center"><b>Login</b></p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p></p>
+                            <p></p>
+                            <center>
+                                                    <i class="material-icons">perm_identity</i></center>
+
+                        </div>
+                        <div class="col-md-8">
+                                                  <input type="text" class="form-control" name="username" id="username" placeholder="Username...">
+
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p></p>
+                            <p></p>
+                            <center>
+                          <i class="material-icons">lock_outline</i>
+                            </center>
+                        </div>
+                        <div class="col-md-8">
+                      <input type="password" name="password" id="password" class="form-control" placeholder="Password...">
+
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer justify-content-center">
+                    <center>
+                  <button type="submit" class="btn btn-rose btn-link btn-lg">Login</button></center>
+                </div>
+                  <center>
+                                <label><a href="{% url 'register' %}" class="link footer-link">Create Account</a></label>
+                      </center>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,430 @@
+{% load static %}
+
+{% url 'welcome' as welcome %}
+{% url 'question-board' as questionboard %}
+{% url 'ask' as ask %}
+{% url 'codingclass' as codingclass %}
+{% url 'work-experience' as workexperience %}
+{% url 'job-placement' as jobplacement %}
+{% url 'employability' as employability %}
+{% url 'life-skills' as lifeskills %}
+{% url 'entrepreneurship' as entrepreneurship %}
+{% url 'blog_home' as bloghome %}
+{% url 'about' as about %}
+{% url 'mail' as mail %}
+<!--SideBar-->
+	    <div class="sidebar" data-active-color="rose" data-background-color="black">
+    <!--
+        Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+        Tip 2: you can also add an image using data-image tag
+        Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+    -->
+
+    <div class="logo">
+        <a href="{% url 'welcome' %}" class="simple-text logo-mini">
+                                    <i class="material-icons">school</i>
+
+        </a>
+
+        <a href="{% url 'welcome' %}" class="simple-text logo-normal">
+             Presevere
+        </a>
+    </div>
+
+    <div class="sidebar-wrapper">
+        {% if user.is_authenticated %}
+        <div class="user">
+            <div class="photo">
+                <img src="{{ user.profile.profile_image.thumbnail.url }}" />
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                         {{ user.profile | title}}
+                        <b class="caret"></b>
+                    </span>
+                </a>
+                <div class="clearfix"></div>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="{% url 'profile' %}">
+                                <span class="sidebar-mini"> EP </span>
+                                <span class="sidebar-normal"> Edit Profile </span>
+                            </a>
+                        </li>
+                        <li>
+                                 <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                        <form id="logout" action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden">
+                        </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav">
+        {% if request.path == welcome or request.path == mail %}
+            <li class="active" data-background-color="blue">
+                <a href="{{ welcome }}" style="background-color: #00a5bb">
+                    <i class="material-icons">home</i>
+                    <p> Home </p>
+                </a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{{ welcome }}">
+                    <i class="material-icons">home</i>
+                    <p> Home </p>
+                </a>
+            </li>
+            {% endif %}
+        {% if request.path == questionboard or request.path == ask %}
+            <li class="active" data-background-color="blue">
+                <a data-toggle="collapse" href="#pagesExamples" style="background-color: #00a5bb">
+                    <i class="material-icons">question_answer</i>
+                    <p> Question Board
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="pagesExamples">
+                    <ul class="nav">
+                        {% if request.path == questionboard %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ questionboard }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> VQ </span>
+                                <span class="sidebar-normal"> View Questions </span>
+                            </a>
+                        </li>
+                            {% else %}
+                            <li>
+                                <a href="{{ questionboard }}">
+                                    <span class="sidebar-mini"> VQ </span>
+                                    <span class="sidebar-normal"> View Questions </span>
+                                </a>
+                            </li>
+                            {% endif %}
+                    {% if request.path == ask %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ ask }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> AQ </span>
+                                <span class="sidebar-normal"> Ask A Question </span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ ask }}">
+                                <span class="sidebar-mini"> AQ </span>
+                                <span class="sidebar-normal"> Ask A Question </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+            {% else %}
+            <li>
+                <a data-toggle="collapse" href="#pagesExamples">
+                    <i class="material-icons">question_answer</i>
+                    <p> Question Board
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="pagesExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ questionboard }}">
+                                <span class="sidebar-mini"> VQ </span>
+                                <span class="sidebar-normal"> View Questions </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-mini"> AQ </span>
+                                <span class="sidebar-normal"> Ask A Question </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {% endif %}
+            {% if request.path == codingclass or request.path == workexperience or request.path == jobplacement or request.path == employability or request.path == lifeskills or request.path == entrepreneurship %}
+            <li class="active" data-background-color="blue">
+                <a data-toggle="collapse" href="#componentsExamples" style="background-color: #00a5bb">
+                    <i class="material-icons">how_to_reg</i>
+                    <p> The Solution
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="componentsExamples">
+                    <ul class="nav">
+                        {% if request.path == codingclass %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ codingclass }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> CC </span>
+                                <span class="sidebar-normal"> Coding Classes </span>
+                            </a>
+                        </li>
+                            {% else %}
+                            <li>
+                            <a href="{{ codingclass }}">
+                                <span class="sidebar-mini"> CC </span>
+                                <span class="sidebar-normal"> Coding Classes </span>
+                            </a>
+                        </li>
+                            {% endif %}
+                    {% if request.path == workexperience %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ workexperience }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> WE </span>
+                                <span class="sidebar-normal"> Work Experience </span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ workexperience }}">
+                                <span class="sidebar-mini"> WE </span>
+                                <span class="sidebar-normal"> Work Experience </span>
+                            </a>
+                        {% endif %}
+                    {% if request.path == jobplacement %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ jobplacement }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> JP </span>
+                                <span class="sidebar-normal"> Job Placement </span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ jobplacement }}">
+                                <span class="sidebar-mini"> JP </span>
+                                <span class="sidebar-normal"> Job Placement </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    {% if request.path == employability %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ employability }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Employability </span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ employability }}">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Employability </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    {% if request.path == lifeskills %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ lifeskills }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> LS </span>
+                                <span class="sidebar-normal"> Life Skills </span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ lifeskills }}">
+                                <span class="sidebar-mini"> LS </span>
+                                <span class="sidebar-normal"> Life Skills </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    {% if request.path == entrepreneurship %}
+                        <li class="active" data-background-color="blue">
+                            <a href="{{ entrepreneurship }}" style="background-color: #00a5bb">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Entrepreneurship </span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{{ entrepreneurship }}">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Entrepreneurship </span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+                {% else %}
+                <li>
+                <a data-toggle="collapse" href="#componentsExamples">
+                    <i class="material-icons">how_to_reg</i>
+                    <p> The Solution
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="componentsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{{ codingclass }}">
+                                <span class="sidebar-mini"> CC </span>
+                                <span class="sidebar-normal"> Coding Classes </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ workexperience }}">
+                                <span class="sidebar-mini"> WE </span>
+                                <span class="sidebar-normal"> Work Experience </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ jobplacement }}">
+                                <span class="sidebar-mini"> JP </span>
+                                <span class="sidebar-normal"> Job Placement </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ employability }}">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Employability </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ lifeskills }}">
+                                <span class="sidebar-mini"> LS </span>
+                                <span class="sidebar-normal"> Life Skills </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ entrepreneurship }}">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Entrepreneurship </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+                {% endif %}
+
+
+            {% if request.path == bloghome %}
+            <li class="active" data-background-color="blue">
+                <a href="{{ bloghome }}" style="background-color: #00a5bb">
+                    <i class="material-icons">create</i>
+                    <p> Blog </p>
+                </a>
+            </li>
+                {% else %}
+                <li>
+                <a href="{{ bloghome }}">
+                    <i class="material-icons">create</i>
+                    <p> Blog </p>
+                </a>
+            </li>
+                {% endif %}
+            {% if request.path == about %}
+            <li class="active" data-background-color="blue">
+                <a href="{{ about }}" style="background-color: #00a5bb">
+                    <i class="material-icons">supervised_user_circle</i>
+                    <p> About Us </p>
+                </a>
+            </li>
+                {% else %}
+                <li>
+                <a href="{{ about }}">
+                    <i class="material-icons">supervised_user_circle</i>
+                    <p> About Us </p>
+                </a>
+            </li>
+                {% endif %}
+
+{#            <li>#}
+{#                <a href="./calendar.html">#}
+{#                    <i class="material-icons">date_range</i>#}
+{#                    <p> Calendar </p>#}
+{#                </a>#}
+{#            </li>#}
+
+        </ul>
+        {% else %}
+            <ul class="nav">
+                        <li>
+                            <a href="{% url 'login' %}">
+                                <i class="material-icons">account_circle</i>
+                                <span class="sidebar-normal"> Login</span>
+                            </a>
+                        </li>
+                    </ul>
+    <ul class="nav">
+
+            <li class="active" data-background-color="blue">
+                <a href="{% url 'welcome' %}" style="background-color: #00a5bb">
+                    <i class="material-icons">home</i>
+                    <p> Home </p>
+                </a>
+            </li>
+
+            <li>
+                <a data-toggle="collapse" href="#componentsExamples">
+                    <i class="material-icons">how_to_reg</i>
+                    <p> The Solution
+                       <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="componentsExamples">
+                    <ul class="nav">
+                        <li>
+                            <a href="{% url 'codingclass' %}">
+                                <span class="sidebar-mini"> CC </span>
+                                <span class="sidebar-normal"> Coding Classes </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'work-experience' %}">
+                                <span class="sidebar-mini"> WE </span>
+                                <span class="sidebar-normal"> Work Experience </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'job-placement' %}">
+                                <span class="sidebar-mini"> JP </span>
+                                <span class="sidebar-normal"> Job Placement </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'employability' %}">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Employability </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'life-skills' %}">
+                                <span class="sidebar-mini"> LS </span>
+                                <span class="sidebar-normal"> Life Skills </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'entrepreneurship' %}">
+                                <span class="sidebar-mini"> E </span>
+                                <span class="sidebar-normal"> Entrepreneurship </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="{% url 'blog_home' %}">
+                    <i class="material-icons">create</i>
+                    <p> Blog </p>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'about' %}">
+                    <i class="material-icons">supervised_user_circle</i>
+                    <p> About Us </p>
+                </a>
+            </li>
+
+        </ul>
+        {% endif %}
+    </div>
+</div>
+<!--End SideBar -->

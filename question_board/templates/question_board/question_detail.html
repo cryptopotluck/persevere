@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+    <div class="card">
+        <div class="container">
+        <center><div class="card-title"><h2>{{ object.post_title | title}}</h2></div>
+        <label>{{ object.post_owner.profile.first_name | title}} {{ object.post_owner.profile.last_name | title}}</label></center>
+            <center><label class="small">{{ object.pub_date }}</label></center>
+        <hr>
+        {{ object.post_body | safe }}
+    </div>
+</div>
+<a href="{% url 'reply' question.pk %}" class="btn btn-info" style="position: absolute; top: 20vh; right: 0vw">Reply</a>
+
+
+
+    {% for reply in object.get_first_page %}
+        <div class="container">
+         <div class="card">
+        <div class="reply">
+
+              <div class="reply-body">
+
+                {{ reply | safe }}
+
+              </div>
+            <hr>
+            <div class="footer pull-right">
+
+                        {{ reply.author | title }}
+
+                  </small>
+                  <br>
+                  {{ reply.pub_date }}
+              </div>
+
+ </div>
+         </div>
+        </div>
+    {% endfor %}
+    {% if object.get_first_page.has_other_pages %}
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+          {% if object.get_first_page.has_previous %}
+            <li class="page-item"><button class="page-link" onclick="redirect_page({{ object.pk }}, {{object.get_first_page.previous_page_number}})">&laquo;</button></li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" >&laquo;</a></li>
+            {% endif %}
+            {% for i in object.get_first_page.paginator.page_range %}
+                {% if object.get_first_page.number == i %}
+                    <li class="page-item active"><button class="page-link">{{i}}</button></li>
+                {% else %}
+                     <li class="page-item"><button class="page-link" onclick="redirect_page({{ object.pk }}, {{i}})">{{i}}</button></li>
+                {% endif %}
+            {% endfor %}
+            {% if object.get_first_page.has_next %}
+            <li class="page-item"><button class="page-link" onclick="redirect_page({{ object.pk }}, {{object.get_first_page.next_page_number}})">&raquo;</button></li>
+            {% else %}
+            <li class="page-item disabled"><a class="page-link" >&raquo;</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+    {% endif %}
+
+
+  </div>
+
+    <script>
+
+    function redirect_page(post_id,index){
+
+        var url = '/questionboard/reply-list/' + post_id + '/?page=' + index;
+        console.log( url );
+
+        $.get(url,function(data){
+
+              document.getElementById('replies-id').innerHTML = data;
+
+        });
+
+    }
+
+    </script>
+
+{% endblock %}

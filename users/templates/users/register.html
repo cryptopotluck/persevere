@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ed2go.com%2Fbinaries%2Fcontent%2Fgallery%2Fed2go%2Fproducts%2F16766.jpg&f=1'); background-size: cover; background-position: top center; height: 80vh">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="container">
+        <div class="row">
+            <br>
+            <br>
+            <br>
+            <br>
+          <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto" data-aos="fade-up">
+              <!-- Alerts -->
+        {% include 'partials/_alerts.html' %}
+            <form id="RegisterValidation" class="form" method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+              <div class="card card-login">
+                <div class="card-body ">
+                  <p class="card-title text-center"><b>Register</b></p>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p></p>
+                            <p></p>
+                            <center>
+                          <i class="material-icons">person_add</i>
+                            </center>
+                        </div>
+                        <div class="col-md-8">
+                      <input type="text" class="form-control" name="userName" placeholder="Username..." required>
+
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p></p>
+                            <p></p>
+                            <center>
+                                                    <i class="material-icons">email</i></center>
+
+                        </div>
+                        <div class="col-md-8">
+                                                  <input type="email" class="form-control" placeholder="Email..." name="email" required>
+
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p></p>
+                            <p></p>
+                            <center>
+                          <i class="material-icons">lock_outline</i>
+                            </center>
+                        </div>
+                        <div class="col-md-8">
+                      <input type="password" name="password" id="registerPassword" class="form-control" placeholder="Password..." required>
+
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p></p>
+                            <p></p>
+                            <center>
+                          <i class="material-icons">lock_outline</i>
+                            </center>
+                        </div>
+                        <div class="col-md-8">
+                      <input type="password" name="password2" id="registerPasswordConfirmation" class="form-control" placeholder="Confirm Password..." required>
+
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer justify-content-center">
+                    <center>
+                  <button type="submit" class="btn btn-rose btn-link btn-lg">Create Account</button></center>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

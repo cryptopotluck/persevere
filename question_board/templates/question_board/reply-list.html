@@ -1,0 +1,32 @@
+{% for reply in replies_response %}
+    <div class="container">
+    <div class="card">
+    {{ reply.reply_body }}
+    </div>
+    </div>
+{% endfor %}
+
+{% if replies_response.has_other_pages %}
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+      {% if replies_response.has_previous %}
+        <li class="page-item"><button class="page-link" onclick="redirect_page({{ post.pk }}, {{replies_response.previous_page_number}})">&laquo;</button></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link" >&laquo;</a></li>
+        {% endif %}
+        {% for i in replies_response.paginator.page_range %}
+            {% if replies_response.number == i %}
+                <li class="page-item active"><button class="page-link">{{i}}</button></li>
+            {% else %}
+                 <li class="page-item"><button class="page-link" onclick="redirect_page({{ post.pk }}, {{i}})">{{i}}</button></li>
+            {% endif %}
+        {% endfor %}
+        {% if replies_response.has_next %}
+        <li class="page-item"><button class="page-link" onclick="redirect_page({{ post.pk }}, {{replies_response.next_page_number}})">&raquo;</button></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link" >&raquo;</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+{% endif %}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#id_profile_image").change(function (e) {
+                for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                    var file = e.originalEvent.srcElement.files[i];
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        $('#display_pic')
+                            .attr('src', reader.result);
+                            {#.width(400);#}
+                            {#.height(400);#}
+                    };
+                    reader.readAsDataURL(file);
+                    break;
+                }
+            });
+        });
+    </script>
+      <div class="content">
+        <div class="container-fluid">
+            <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header" data-background-color="rose" style="position: absolute; top:-2vh">
+                  <h4 class="card-title">Edit Profile -
+                    <small class="category">Complete your profile</small>
+                  </h4>
+                </div>
+                  <br>
+                  <br>
+                <div class="card-body">
+                    {% csrf_token %}
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text" class="form-control" placeholder="{{ username }}" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Email address</label>
+                          <input type="email" class="form-control" placeholder="{{ email }}" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Fist Name</label>
+                            {{ form.first_name }}
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Last Name</label>
+                          {{ form.last_name }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Address</label>
+                          {{ form.address }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">City</label>
+                          {{ form.city }}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Country</label>
+                          {{ form.country }}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group bmd-form-group">
+                          <label class="bmd-label-floating">Postal Code</label>
+                          {{ form.postal_code }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>About Me</label>
+                          <div class="form-group bmd-form-group">
+                              {{ form.media }}
+                            {{ form.about |safe }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-profile">
+                  <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+    <div class="fileinput-new thumbnail img-raised card-avatar">
+        <img id='display_pic' src="{{ user.profile.profile_image.thumbnail.url }}" alt="...">
+    </div>
+    <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+    <div>
+        <span class="btn btn-raised btn-round btn-default btn-file">
+            <span class="fileinput-new" style="height: 25%">Select image</span>
+            <span class="fileinput-exists">Change</span>
+            <input type="file" id="id_profile_image" name="profile_image" accept="image/*" class="form-control"/>
+        </span>
+        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+    </div>
+</div>
+                <div class="card-body">
+                  <h4 class="card-title">{{ first_name | title}} {{ last_name | title }}</h4>
+                  <p class="card-description">
+                    {{ about |safe }}
+                  </p>
+                </div>
+              </div>
+                <div class="card">
+                     <center><button type="submit" class="btn btn-rose">Update Profile</button></center>
+                </div>
+            </div>
+          </div>
+            </form>
+        </div>
+      </div>
+{% endblock %}
